@@ -26,9 +26,10 @@ li {
 }
 
 .input-form {
-    background: #cccccc;
+    background: #ccc;
     padding: 40px;
 }
+
 .input-area {
     display: flex;
     gap: 20px;
@@ -37,10 +38,33 @@ li {
 .input-text {
     padding: 5px;
     min-width: 300px;
+    border: none;
+}
+.input-button {
+    padding: 2px 10px;
+    border: 1px solid;
+    border-radius: 4px;
 }
 
 .tab-list {
     display: flex;
     flex-direction: row;
     gap: 20px;
+}
+
+.sort-list {
+    padding: 3px;
+    background-color: #ebebeb;
+}
+
+.task-main {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.task-main th,
+.task-main td {
+    text-align: center;
+    border: 2px solid #ccc;
+    padding: 10px;
 }

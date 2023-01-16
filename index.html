@@ -18,10 +18,15 @@
             </form>
             <ul class="tab-list">
                 <li>
-                    <button>完了したタスク</button>
+                    <button class="change-button">完了したタスク</button>
                 </li>
                 <li>
-                    <button>登録日</button>
+                    <select class="sort-list">
+                        <option value="created_day_desc">登録日↓</option>
+                        <option value="created_day_asc">登録日↑</option>
+                        <option value="priority_desc">優先度↓</option>
+                        <option value="priority_asc">優先度↑</option>
+                    </select>
                 </li>
             </ul>
             <table class="task-main">
@@ -32,10 +37,20 @@
                         <th>登録日</th>
                         <th>優先度</th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="task-body">
-                    <tr></tr>
+                    <tr>
+                        <td><input type="checkbox" /></td>
+                        <td>買い物に行く</td>
+                        <td>2023/1/17</td>
+                        <td>3</td>
+                        <td><button>完了</button></td>
+                        <td><button>編集</button></td>
+                        <td><button>削除</button></td>
+                    </tr>
                 </tbody>
             </table>
         </main>
