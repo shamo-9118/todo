@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+main {
+    background-color: #ebebeb;
+    width: 80%;
+    border: 2px #dadada solid;
+    padding: clamp(20px, 2rem, 30px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 2.5vw, 4rem);
+    margin: 0;
+}
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+
+.input-form {
+    background: #cccccc;
+    padding: 40px;
+}
+.input-area {
+    display: flex;
+    gap: 20px;
+}
+
+.input-text {
+    padding: 5px;
+    min-width: 300px;
+}
+
+.tab-list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
