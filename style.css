@@ -67,7 +67,7 @@ li {
 
 .task-main th,
 .task-main td {
-    border: 2px solid #ccc;
     padding: 10px;
+    border: 2px solid #ccc;
     text-align: center;
 }
