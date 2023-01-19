@@ -10,19 +10,19 @@
     <body>
         <main class="base">
             <h1>My Todo</h1>
-            <form class="input-form" id="inputForm">
+            <form id="inputForm" class="input-form">
                 <div class="input-area">
-                    <input type="text" class="input-text" id="inputText" />
+                    <input id="inputText" class="input-text" type="text" />
                     <button id="inputButton" class="input-button" type="submit">
                         登録
                     </button>
                 </div>
             </form>
-            <div class="tab-list" id="tabList">
-                <button class="change-button" id="changeButton">
+            <div id="tabList" class="tab-list">
+                <button id="changeButton" class="change-button">
                     完了したタスク
                 </button>
-                <select class="sort-list" id="sortList">
+                <select id="sortList" class="sort-list">
                     <option value="created_day_desc">登録日↓</option>
                     <option value="created_day_asc">登録日↑</option>
                     <option value="priority_desc">優先度↓</option>
@@ -41,7 +41,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody class="task-body" id="taskBody">
+                <tbody id="taskBody" class="task-body">
                     <tr>
                         <td><input type="checkbox" /></td>
                         <td>買い物に行く</td>
