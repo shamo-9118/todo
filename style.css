@@ -5,18 +5,18 @@ body {
 }
 
 main {
-    background-color: #ebebeb;
-    width: 80%;
-    border: 2px #dadada solid;
-    padding: clamp(20px, 2rem, 30px);
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 80%;
+    padding: clamp(20px, 2rem, 30px);
+    border: 2px #dadada solid;
+    background-color: #ebebeb;
 }
 
 h1 {
-    font-size: clamp(1.5rem, 2.5vw, 4rem);
     margin: 0;
+    font-size: clamp(1.5rem, 2.5vw, 4rem);
 }
 
 ul {
@@ -28,8 +28,8 @@ li {
 }
 
 .input-form {
-    background: #ccc;
     padding: 40px;
+    background: #ccc;
 }
 
 .input-area {
@@ -38,8 +38,8 @@ li {
 }
 
 .input-text {
-    padding: 5px;
     min-width: 300px;
+    padding: 5px;
     border: none;
 }
 
@@ -67,7 +67,7 @@ li {
 
 .task-main th,
 .task-main td {
-    text-align: center;
     border: 2px solid #ccc;
     padding: 10px;
+    text-align: center;
 }
