@@ -1,23 +1,36 @@
 "use strict";
-// ここに登録したタスクの情報を保存する
 const todoList = [];
 
-//DOMの取得
-const inputForm = document.getElementById("inputForm");
-const inputText = document.getElementById("inputText");
-const taskBody = document.getElementById("taskBody");
-const changeButton = document.getElementById("changeButton");
-const sortList = document.getElementById("sortList");
+let inputForm, todoMain, todoButton, tabButton, sortMenu;
+let displayTarget = "indox";
+let sortIndex = "created-desc";
 
-inputForm.addEventListener("submit", () => {
-  handleSubmit();
-});
+const registerDOM = () => {
+  inputForm = document.getElementById("inputForm");
+  todoMain = document.getElementById("todoMain");
+  todoButton = document.getElementById("todoButton");
+  sortMenu = document.getElementById("sortMenu");
+};
 
-const handleSubmit = () => {
+const initialize = () => {
+  registerDOM();
+  bindEvent();
+};
+
+document.addEventListener("DOMContentLoaded", initialize.bind(this));
+
+const bindEvent = () => {
+  inputForm.addEventListener("submit", () => {
+    hanndleSubmit();
+  });
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
   const todoObj = {
-    text: inputForm["input-text"].value,
+    text: inputForm["inputText"].value,
   };
-  addtodo(todoObj);
+  addTodo(todoObj);
 };
 
 const addTodo = (todoObj) => {
@@ -26,7 +39,7 @@ const addTodo = (todoObj) => {
   todoObj.priority = 3;
   todoObj.isDone = false;
   todoObj.isEdit = false;
-  todoList.unshift;
+  todoList.unshift(todoObj);
   updateTodoList();
   clearInputForm();
 };
@@ -35,9 +48,9 @@ const updateTodoList = () => {
   let htmlStrings = "";
   todoList.forEach((todo) => {
     htmlStrings += createTodoHtmlString(todo);
-    taskBody.innerHTML = htmlStrings;
+    todoMain.innerHTML = htmlStrings;
   });
-  taskBody.innerHTML = htmlStrings;
+  taskMain.innerHTML = htmlStrings;
 };
 
 const createTodoHtmlString = (todo) => {
@@ -49,25 +62,20 @@ const createTodoHtmlString = (todo) => {
   let todoTextCell = "";
   let priorityCell = "";
   if (todo.isEdit) {
-    todotextCell =
-      '<td class="cell-text"><input class="input-edit" type="text" value=' +
-      todo.text +
-      "/></td>";
-    priorityCell =
-      '<td class="cell-priority"><input class="input-priority" type="number" value=' +
-      todo.priority +
-      "/></td>";
+    todoTextCell = `<td class="cell-text"><input class="input-edit" type="text" value=${todo.text}/></td>`;
+    priorityCell = `<td class="cell-priority"><input class="input-priority" type="number" value=${todo.priority}/></td>`;
   } else {
-    todoTextCell = '<td class="cell-text">' + todo.text + "</td>";
-    priorityCell = '<td class="cell-priorityCell">' + todo.priority + "</td>";
+    todoTextCell = `<td class="cell-text">${todo.text}</td>`;
+    priorityCell = `<td class="cell-priorityCell">${todo.priority}</td>`;
   }
-  htmlString += '<tr id="' + todo.id + '">';
+  htmlString += `<tr id="${todo.id}">`;
   htmlString += `<td class="cell-edit-button">
             <button date-type="${editType}"> ${editButtonLabel}</button>
         </td>`;
   htmlString += todoTextCell;
   htmlString += `<td class="cell-created-at">${todo.createdAt}</td>`;
   htmlString += priorityCell;
+  htmlString += `<td class="cell-done"></td>`;
   htmlString += `<button data-type="${doneType}"></button>`;
   htmlString += doneButtonLabel;
   htmlString += "</button></td>";

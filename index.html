@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>my todo</title>
-        <link rel="stylesheet" href="./style.css" />
-    </head>
-    <body>
-        <main class="base">
-            <h1>My Todo</h1>
-            <form id="inputForm" class="input-form">
-                <div class="input-area">
-                    <input id="inputText" class="input-text" type="text" />
-                    <button id="inputButton" class="input-button" type="submit">
-                        登録
-                    </button>
-                </div>
-            </form>
-            <div id="tabList" class="tab-list">
-                <button id="changeButton" class="change-button">
-                    完了したタスク
-                </button>
-                <select id="sortList" class="sort-list">
-                    <option value="created_day_desc">登録日↓</option>
-                    <option value="created_day_asc">登録日↑</option>
-                    <option value="priority_desc">優先度↓</option>
-                    <option value="priority_asc">優先度↑</option>
-                </select>
-            </div>
-            <table class="task-main">
-                <thead class="task-head">
-                    <tr>
-                        <th></th>
-                        <th>Todo</th>
-                        <th>登録日</th>
-                        <th>優先度</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="taskBody" class="task-body">
-                    <tr>
-                        <td><input type="checkbox" /></td>
-                        <td>買い物に行く</td>
-                        <td>2023/1/17</td>
-                        <td>3</td>
-                        <td><button>完了</button></td>
-                        <td><button>編集</button></td>
-                        <td><button>削除</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </main>
-        <script src="main.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my todo</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="base">
+      <h1>My Todo</h1>
+      <form id="inputForm" class="input-form">
+        <div class="input-area">
+          <input id="inputText" class="input-text" type="text" />
+          <button id="Button" class="input-button" type="submit">登録</button>
+        </div>
+      </form>
+      <div id="tabList" class="tab-list">
+        <button id="changeButton" class="change-button">完了したタスク</button>
+        <select id="sortMenu" class="sort-menu">
+          <option value="created_day_desc">登録日↓</option>
+          <option value="created_day_asc">登録日↑</option>
+          <option value="priority_desc">優先度↓</option>
+          <option value="priority_asc">優先度↑</option>
+        </select>
+      </div>
+      <table id="todoTable" class="task-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Todo</th>
+            <th>登録日</th>
+            <th>優先度</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="todoMain" class="task-body">
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>買い物に行く</td>
+            <td>2023/1/17</td>
+            <td>3</td>
+            <td><button>完了</button></td>
+            <td><button>編集</button></td>
+            <td><button>削除</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <script src="main.js"></script>
+  </body>
 </html>
