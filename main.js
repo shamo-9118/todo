@@ -27,7 +27,7 @@ const todoList = [
 ];
 
 let inputForm, todoMain, todoButton, tabButton, sortMenu;
-let displayTarget = "indox";
+let displayTarget = "inbox";
 let sortIndex = "created-desc";
 
 const registerDOM = () => {
