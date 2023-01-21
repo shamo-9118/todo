@@ -1,30 +1,5 @@
 "use strict";
-const todoList = [
-  {
-    id: "task-1",
-    createdAt: "2023",
-    priority: 3,
-    isDone: true,
-    isEdit: true,
-    text: "牛乳買いたい",
-  },
-  {
-    id: "task-2",
-    createdAt: "2024",
-    priority: 3,
-    isDone: true,
-    isEdit: true,
-    text: "牛乳飲みたい",
-  },
-  {
-    id: "task-3",
-    createdAt: "2025",
-    priority: 3,
-    isDone: true,
-    isEdit: true,
-    text: "牛乳搾りたい",
-  },
-];
+const todoList = [];
 
 let inputForm, todoMain, todoButton, tabButton, sortMenu;
 let displayTarget = "inbox";
@@ -66,24 +41,30 @@ const addTodo = (todoObj) => {
   todoObj.isEdit = false;
   todoList.unshift(todoObj);
   updateTodoList();
-  // clearInputForm();
 };
 
 const updateTodoList = () => {
-  let htmlStrings = "";
-  todoList.map((todo) => {
-    return (htmlStrings = `
-		<tr>
-		<td><input type="checkbox" /></td>
-		<td>${todo.text}</td>
-		<td>${todo.createdAt}</td>
-		<td>${todo.priority}</td>
-		<td><button>完了</button></td>
-		<td><button>編集</button></td>
-		<td><button>削除</button></td>
-	</tr>`);
-  });
-  todoMain.innerHTML = htmlStrings;
+  const template = todoList.map(
+    (todo) =>
+      `<tr>
+			<td>
+				<input type="checkbox" />
+			</td>
+			<td>${todo.text}</td>
+			<td>${todo.createdAt}</td>
+			<td>${todo.priority}</td>
+			<td>
+				<button>完了</button>
+			</td>
+			<td>
+				<button>編集</button>
+			</td>
+			<td>
+				<button>削除</button>
+			</td>
+		</tr>`
+  );
+  todoMain.innerHTML = template;
 };
 
 // const createTodoHtmlString = (todo) => {
