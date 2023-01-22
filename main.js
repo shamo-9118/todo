@@ -45,7 +45,7 @@ const handleSubmit = (event) => {
     inputForm.inputText.value = "";
     return;
   }
-  
+
   const payload = {
     ...defaultValue,
     text: inputForm.inputText.value,
@@ -105,32 +105,3 @@ const updateTodoList = (prevPayload) => {
   todoMain.appendChild(trElement);
 };
 
-// const createTodoHtmlString = (todo) => {
-//   let htmlString = "";
-//   const editType = todo.isEdit ? "editFixed" : "edit";
-//   const editButtonLabel = todo.isEdit ? "編集完了" : "編集";
-//   const doneType = todo.isDone ? "inbox" : "done";
-//   const doneButtonLabel = todo.isEdit ? "完了" : "未完了";
-//   let todoTextCell = "";
-//   let priorityCell = "";
-//   if (todo.isEdit) {
-//     todoTextCell = `<td class="cell-text"><input class="input-edit" type="text" value=${todo.text}/></td>`;
-//     priorityCell = `<td class="cell-priority"><input class="input-priority" type="number" value=${todo.priority}/></td>`;
-//   } else {
-//     todoTextCell = `<td class="cell-text">${todo.text}</td>`;
-//     priorityCell = `<td class="cell-priorityCell">${todo.priority}</td>`;
-//   }
-//   htmlString += `<tr id="${todo.id}">`;
-//   htmlString += `<td class="cell-edit-button">
-//             <button date-type="${editType}"> ${editButtonLabel}</button>
-//         </td>`;
-//   htmlString += todoTextCell;
-//   htmlString += `<td class="cell-created-at">${todo.createdAt}</td>`;
-//   htmlString += priorityCell;
-//   htmlString += `<td class="cell-done"></td>`;
-//   htmlString += `<button data-type="${doneType}"></button>`;
-//   htmlString += doneButtonLabel;
-//   htmlString += "</button></td>";
-//   htmlString += "</tr>";
-//   return htmlString;
-// };
