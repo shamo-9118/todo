@@ -36,6 +36,16 @@ const bindEvent = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
+  const alreadyExistsTodo = todoList.map((todo) => {
+    return todo.text;
+  });
+
+  if (alreadyExistsTodo.includes(inputForm.inputText.value)) {
+    alert("同じタスクは登録できません。");
+    inputForm.inputText.value = "";
+    return;
+  }
+  
   const payload = {
     ...defaultValue,
     text: inputForm.inputText.value,
@@ -53,8 +63,7 @@ const addTodo = (payload) => {
 };
 
 const updateTodoList = (prevPayload) => {
-  const fragment = document.createDocumentFragment();
-  const trElement = document.createElement("tr");
+  //引数からタスクとして登録するDOMを生成する
   const inputElement = document.createElement("input");
   inputElement.setAttribute("type", "checkbox");
   const taskText = prevPayload.text;
@@ -66,6 +75,7 @@ const updateTodoList = (prevPayload) => {
   doneButton.innerHTML = "完了";
   editButton.innerHTML = "編集";
   deleteButton.innerHTML = "削除";
+
   const tdInput = document.createElement("td");
   const tdTaskText = document.createElement("td");
   const tdCreatedAt = document.createElement("td");
@@ -81,6 +91,9 @@ const updateTodoList = (prevPayload) => {
   tdDoneButton.appendChild(doneButton);
   tdEditButton.appendChild(editButton);
   tdDeleteButton.appendChild(deleteButton);
+
+  const trElement = document.createElement("tr");
+  const fragment = document.createDocumentFragment();
   fragment.appendChild(tdInput);
   fragment.appendChild(tdTaskText);
   fragment.appendChild(tdCreatedAt);
