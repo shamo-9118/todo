@@ -4,16 +4,20 @@ const obj = {
   c: "ccc",
 };
 
-const array = [];
 const messages = {
   a: "hello",
   b: "Ciao",
   c: "こんにちは",
 };
 
-
-
+const array = ["hey", "hello", "how are you", "whats up"];
 const testDiv = document.getElementById("test");
+const button = document.createElement("button");
+button.setAttribute("onClick", `greeting(2)`);
+testDiv.appendChild(button);
+const greeting = (number) => {
+  alert(array[number]);
+};
 // const fragment = document.createDocumentFragment();
 // const div1 = document.createElement("div");
 // const div2 = document.createElement("div");

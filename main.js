@@ -72,6 +72,7 @@ const updateTodoList = (prevPayload) => {
   const doneButton = document.createElement("button");
   const editButton = document.createElement("button");
   const deleteButton = document.createElement("button");
+  doneButton.addEventListener("click", () => doneTask(prevPayload.id));
   doneButton.innerHTML = "完了";
   editButton.innerHTML = "編集";
   deleteButton.innerHTML = "削除";
@@ -93,6 +94,7 @@ const updateTodoList = (prevPayload) => {
   tdDeleteButton.appendChild(deleteButton);
 
   const trElement = document.createElement("tr");
+  trElement.setAttribute("id", `${prevPayload.id}`);
   const fragment = document.createDocumentFragment();
   fragment.appendChild(tdInput);
   fragment.appendChild(tdTaskText);
@@ -105,3 +107,7 @@ const updateTodoList = (prevPayload) => {
   todoMain.appendChild(trElement);
 };
 
+const doneTask = (id) => {
+  const target = document.getElementById(id);
+  todoMain.removeChild(target);
+};
