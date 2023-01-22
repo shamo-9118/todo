@@ -1,5 +1,14 @@
 "use strict";
+
 const todoList = [];
+const defaultValue = {
+  id: "",
+  text: "",
+  createdAt: "",
+  priority: "3",
+  todoObj: false,
+  isDone: false,
+};
 
 let inputForm, todoMain, todoButton, tabButton, sortMenu;
 let displayTarget = "inbox";
@@ -27,44 +36,60 @@ const bindEvent = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  const todoObj = {
+  const payload = {
+    ...defaultValue,
     text: inputForm.inputText.value,
   };
-  addTodo(todoObj);
+  inputForm.inputText.value = "";
+  addTodo(payload);
 };
 
-const addTodo = (todoObj) => {
-  todoObj.id = "todo-" + (todoList.length + 1);
-  todoObj.createdAt = new Date().toLocaleString();
-  todoObj.priority = 3;
-  todoObj.isDone = false;
-  todoObj.isEdit = false;
-  todoList.unshift(todoObj);
-  updateTodoList();
+const addTodo = (payload) => {
+  const prevPayload = { ...payload };
+  prevPayload.id = "todo-" + (todoList.length + 1);
+  prevPayload.createdAt = new Date().toLocaleString();
+  todoList.push(prevPayload);
+  updateTodoList(prevPayload);
 };
 
-const updateTodoList = () => {
-  const template = todoList.map(
-    (todo) =>
-      `<tr>
-			<td>
-				<input type="checkbox" />
-			</td>
-			<td>${todo.text}</td>
-			<td>${todo.createdAt}</td>
-			<td>${todo.priority}</td>
-			<td>
-				<button>完了</button>
-			</td>
-			<td>
-				<button>編集</button>
-			</td>
-			<td>
-				<button>削除</button>
-			</td>
-		</tr>`
-  );
-  todoMain.innerHTML = template;
+const updateTodoList = (prevPayload) => {
+  const fragment = document.createDocumentFragment();
+  const trElement = document.createElement("tr");
+  const inputElement = document.createElement("input");
+  inputElement.setAttribute("type", "checkbox");
+  const taskText = prevPayload.text;
+  const createdAt = prevPayload.createdAt;
+  const priority = prevPayload.priority;
+  const doneButton = document.createElement("button");
+  const editButton = document.createElement("button");
+  const deleteButton = document.createElement("button");
+  doneButton.innerHTML = "完了";
+  editButton.innerHTML = "編集";
+  deleteButton.innerHTML = "削除";
+  const tdInput = document.createElement("td");
+  const tdTaskText = document.createElement("td");
+  const tdCreatedAt = document.createElement("td");
+  const tdPriority = document.createElement("td");
+  const tdDoneButton = document.createElement("td");
+  const tdEditButton = document.createElement("td");
+  const tdDeleteButton = document.createElement("td");
+
+  tdInput.appendChild(inputElement);
+  tdTaskText.innerHTML = taskText;
+  tdCreatedAt.innerHTML = createdAt;
+  tdPriority.innerHTML = priority;
+  tdDoneButton.appendChild(doneButton);
+  tdEditButton.appendChild(editButton);
+  tdDeleteButton.appendChild(deleteButton);
+  fragment.appendChild(tdInput);
+  fragment.appendChild(tdTaskText);
+  fragment.appendChild(tdCreatedAt);
+  fragment.appendChild(tdPriority);
+  fragment.appendChild(tdDoneButton);
+  fragment.appendChild(tdEditButton);
+  fragment.appendChild(tdDeleteButton);
+  trElement.appendChild(fragment);
+  todoMain.appendChild(trElement);
 };
 
 // const createTodoHtmlString = (todo) => {
