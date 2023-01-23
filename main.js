@@ -37,7 +37,7 @@ const bindEvent = () => {
 const handleSubmit = (event) => {
   event.preventDefault();
   const alreadyExistsTodo = todoList.find((todo) => {
-    return todo.text === inputForm.taskText.value;
+    todo.text === inputForm.taskText.value;
   });
 
   if (alreadyExistsTodo) {
@@ -64,26 +64,26 @@ const addTodo = (payload) => {
 
 const updateTodoList = (prevPayload) => {
   //引数からタスクとして登録するDOMを生成する
-  const inputElement = document.createElement("input");
+  const inputElement = createElement("input");
   inputElement.setAttribute("type", "checkbox");
   const taskText = prevPayload.text;
   const createdAt = prevPayload.createdAt;
   const priority = prevPayload.priority;
-  const doneButton = document.createElement("button");
-  const editButton = document.createElement("button");
-  const deleteButton = document.createElement("button");
+  const doneButton = createElement("button");
+  const editButton = createElement("button");
+  const deleteButton = createElement("button");
   doneButton.addEventListener("click", () => doneTask(prevPayload.id));
   doneButton.innerHTML = "完了";
   editButton.innerHTML = "編集";
   deleteButton.innerHTML = "削除";
 
-  const tdInput = document.createElement("td");
-  const tdTaskText = document.createElement("td");
-  const tdCreatedAt = document.createElement("td");
-  const tdPriority = document.createElement("td");
-  const tdDoneButton = document.createElement("td");
-  const tdEditButton = document.createElement("td");
-  const tdDeleteButton = document.createElement("td");
+  const tdInput = createElement("td");
+  const tdTaskText = createElement("td");
+  const tdCreatedAt = createElement("td");
+  const tdPriority = createElement("td");
+  const tdDoneButton = createElement("td");
+  const tdEditButton = createElement("td");
+  const tdDeleteButton = createElement("td");
 
   tdInput.appendChild(inputElement);
   tdTaskText.innerHTML = taskText;
@@ -93,7 +93,7 @@ const updateTodoList = (prevPayload) => {
   tdEditButton.appendChild(editButton);
   tdDeleteButton.appendChild(deleteButton);
 
-  const trElement = document.createElement("tr");
+  const trElement = createElement("tr");
   trElement.setAttribute("id", prevPayload.id);
   const fragment = document.createDocumentFragment();
   fragment.appendChild(tdInput);
@@ -105,6 +105,10 @@ const updateTodoList = (prevPayload) => {
   fragment.appendChild(tdDeleteButton);
   trElement.appendChild(fragment);
   todoMain.appendChild(trElement);
+};
+
+const createElement = (tag) => {
+  return document.createElement(tag);
 };
 
 const doneTask = (id) => {
