@@ -94,7 +94,7 @@ const updateTodoList = (prevPayload) => {
   tdDeleteButton.appendChild(deleteButton);
 
   const trElement = document.createElement("tr");
-  trElement.setAttribute("id", `${prevPayload.id}`);
+  trElement.setAttribute("id", prevPayload.id);
   const fragment = document.createDocumentFragment();
   fragment.appendChild(tdInput);
   fragment.appendChild(tdTaskText);
