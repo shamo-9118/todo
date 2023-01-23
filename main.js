@@ -36,6 +36,7 @@ const bindEvent = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
+  //２個目のタスク登録がここで引っかかってうまくできない、、、find調べる！
   const alreadyExistsTodo = todoList.find((todo) => {
     todo.text === inputForm.taskText.value;
   });
@@ -62,6 +63,7 @@ const addTodo = (payload) => {
   updateTodoList(prevPayload);
 };
 
+//文字列でタスクを登録できるようにする！
 const updateTodoList = (prevPayload) => {
   //引数からタスクとして登録するDOMを生成する
   const inputElement = createElement("input");
