@@ -36,11 +36,11 @@ const bindEvent = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  const alreadyExistsTodo = todoList.map((todo) => {
-    return todo.text;
+  const alreadyExistsTodo = todoList.find((todo) => {
+    return todo.text === inputForm.taskText.value;
   });
 
-  if (alreadyExistsTodo.includes(inputForm.inputText.value)) {
+  if (alreadyExistsTodo) {
     alert("同じタスクは登録できません。");
     inputForm.inputText.value = "";
     return;
