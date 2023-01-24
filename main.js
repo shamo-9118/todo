@@ -57,7 +57,7 @@ const handleSubmit = (event) => {
 
 const addTodo = (payload) => {
   const prevPayload = { ...payload };
-  prevPayload.id = "todo-" + ([...todoList].length + 1);
+  prevPayload.id = `todo-${todoList.length + 1}`;
   prevPayload.createdAt = new Date().toLocaleString();
   todoList.push(prevPayload);
   updateTodoList(prevPayload);
