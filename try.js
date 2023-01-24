@@ -11,6 +11,10 @@ const messages = {
 };
 
 const array = ["hey", "hello", "how are you", "whats up"];
+const text = "hey";
+const bool = array.find(message => {
+  return
+})
 const testDiv = document.getElementById("test");
 const button = document.createElement("button");
 button.setAttribute("onClick", `greeting(2)`);

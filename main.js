@@ -36,11 +36,9 @@ const bindEvent = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  //２個目のタスク登録がここで引っかかってうまくできない、、、find調べる！
   const alreadyExistsTodo = todoList.find((todo) => {
-    todo.text === inputForm.taskText.value;
+    return todo.text === inputForm.inputText.value;
   });
-
   if (alreadyExistsTodo) {
     alert("同じタスクは登録できません。");
     inputForm.inputText.value = "";
