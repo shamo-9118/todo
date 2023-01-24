@@ -36,8 +36,14 @@ const bindEvent = () => {
 
 const handleSubmit = (event) => {
   event.preventDefault();
+  const inputText = inputForm.inputText.value.trim();
+  if (inputText === "") {
+    alert("空白のみの登録はできません。");
+    inputForm.inputText.value = "";
+    return;
+  }
   const alreadyExistsTodo = todoList.find((todo) => {
-    return todo.text === inputForm.inputText.value;
+    return todo.text === inputText;
   });
   if (alreadyExistsTodo) {
     alert("同じタスクは登録できません。");
@@ -47,7 +53,7 @@ const handleSubmit = (event) => {
 
   const payload = {
     ...defaultValue,
-    text: inputForm.inputText.value,
+    text: inputText,
   };
   inputForm.inputText.value = "";
   addTodo(payload);
