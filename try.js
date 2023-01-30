@@ -2,7 +2,20 @@ const obj = {
   a: "aaa",
   b: "bbb",
   c: "ccc",
+  method: function () {
+    console.log(this.a);
+  },
 };
+obj.method();
+let user = "";
+
+const setUserName = (name) => {
+  user = name;
+};
+
+document.addEventListener("DOMContentLoaded", setUserName("marumoto"));
+
+console.log(user);
 
 const messages = {
   a: "hello",

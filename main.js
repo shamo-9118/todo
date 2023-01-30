@@ -26,7 +26,7 @@ const initialize = () => {
   bindEvent();
 };
 
-document.addEventListener("DOMContentLoaded", initialize.bind(this));
+document.addEventListener("DOMContentLoaded", initialize);
 
 const bindEvent = () => {
   inputForm.addEventListener("submit", (event) => {
